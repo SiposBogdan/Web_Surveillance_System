@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live feed with frequency selection</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Live feed with movement detection</h1>
+
+    <div class="container">
+        <div class="form_container">
+            <form method="POST" action="/set_frequency">
+                <label>Select beep frequency:</label><br>
+                <input type="radio" id="freq2000" name="frequency" value="2000">
+                <label for="freq2000">2000 Hz</label><br>
+                <input type="radio" id="freq4000" name="frequency" value="4000" checked>
+                <label for="freq4000">4000 Hz</label><br>
+                <input type="radio" id="freq8000" name="frequency" value="8000">
+                <label for="freq8000">8000 Hz</label><br>
+                <input type="submit" value="Set Frequency">
+            </form>
+
+            <form method="POST" action="/set_security">
+                <label>Set Security:</label><br>
+                <input type="radio" id="security_on" name="security" value="1" checked>
+                <label for="security_on">ON</label><br>
+                <input type="radio" id="security_off" name="security" value="2">
+                <label for="security_off">OFF</label><br>
+                <input type="submit" value="Set Security">
+            </form>
+
+            <form method="POST" action="/set_sensibility">
+                <label>Select sensitivity:</label><br>
+                <input type="radio" id="sens10" name="sensibility" value="10">
+                <label for="sens10">High sensitivity</label><br>
+                <input type="radio" id="sens30" name="sensibility" value="30" checked>
+                <label for="sens30">Normal sensitivity</label><br>
+                <input type="radio" id="sens50" name="sensibility" value="50">
+                <label for="sens50">Low sensitivity</label><br>
+                <input type="submit" value="Set Sensitivity">
+            </form>
+        </div>
+
+        <!-- Live video feed on the right side -->
+        <div class="video_container">
+            <img src="{{ url_for('live_feed') }}" width="100%" alt="Live Video Feed">
+        </div>
+    </div>
+</body>
+</html>
